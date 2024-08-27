@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Card Fraud Detection</h1>
+        <form id="predictionForm">
+            <label for="Transaction Amount">Transaction Amount:</label>
+            <input type="number" name="Transaction Amount" required><br>
+
+            <label for="Transaction Country">Transaction Country:</label>
+            <select name="Transaction Country" required>
+                <option value="US">US</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="UK">UK</option>
+                <option value="Other">Other</option>
+            </select><br>
+
+            <label for="Transaction Currency">Transaction Currency:</label>
+            <select name="Transaction Currency" required>
+                <option value="USD">USD</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+            </select><br>
+
+            <label for="Transaction Time">Transaction Time (0-23):</label>
+            <select name="Transaction Time" required>
+                {% for i in range(24) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="Transaction Day">Transaction Day:</label>
+            <select name="Transaction Day" required>
+                <option value="Weekday">Weekday</option>
+                <option value="Weekend">Weekend</option>
+            </select><br>
+
+            <label for="Card Issuer">Card Issuer:</label>
+            <select name="Card Issuer" required>
+                <option value="Visa">Visa</option>
+                <option value="MasterCard">MasterCard</option>
+                <option value="Amex">Amex</option>
+                <option value="Discover">Discover</option>
+            </select><br>
+
+            <label for="Card Type">Card Type:</label>
+            <select name="Card Type" required>
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+            </select><br>
+
+            <label for="Online Purchase">Online Purchase:</label>
+            <select name="Online Purchase" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="First Purchase">First Purchase:</label>
+            <select name="First Purchase" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="Customer Age">Customer Age:</label>
+            <input type="number" name="Customer Age" required><br>
+
+            <label for="Account Age">Account Age:</label>
+            <input type="number" name="Account Age" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result" class="result" style="display:none;">
+            <h2>Prediction: <span id="prediction"></span></h2>
+            <p>Probability: <span id="probability"></span></p>
+        </div>
+    </div>
+</body>
+</html>
