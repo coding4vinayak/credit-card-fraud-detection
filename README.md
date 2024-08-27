@@ -1,6 +1,4 @@
-Here's a sample `README.md` for a credit card fraud detection project:
 
----
 
 # Credit Card Fraud Detection
 
